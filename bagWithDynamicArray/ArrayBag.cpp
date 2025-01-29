@@ -128,7 +128,7 @@ void ArrayBag<ItemType>::clear() {
 
 template <class ItemType>
 int ArrayBag<ItemType>::getFrequencyOf(const ItemType &anEntry) const{
-
+/*
     int count = 0;
     for (int i=0; i < itemCount; i++) {
         
@@ -137,6 +137,8 @@ int ArrayBag<ItemType>::getFrequencyOf(const ItemType &anEntry) const{
         }
     }
     return count;
+ */
+    return getFrequenceOfRecursive(items, 0, itemCount - 1, anEntry);
 }
 
 template <class ItemType>
@@ -172,5 +174,22 @@ int ArrayBag<ItemType>::getIndexOf(const ItemType &target) const{
     return -1;
 }
 
-
-
+template <class ItemType>
+int ArrayBag<ItemType>::getFrequenceOfRecursive(ItemType *arr, int startIndex, int lastIndex, const ItemType &anEntry) const{
+    
+    if(startIndex >  lastIndex) {
+        return 0;
+    }
+    
+    else {
+        
+        if (arr[startIndex] == anEntry) {
+            return (1 + getFrequenceOfRecursive(arr, startIndex + 1, lastIndex, anEntry));
+        }
+        
+        else {
+            return (getFrequenceOfRecursive(arr, startIndex + 1, lastIndex, anEntry));
+        }
+        
+    }
+}

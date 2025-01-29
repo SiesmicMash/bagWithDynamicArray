@@ -36,6 +36,7 @@ public:
 
 private: //Some Utility methods
     int getIndexOf(const ItemType& target) const;
+    int getFrequenceOfRecursive(ItemType* arr, int startIndex, int lastIndex, const ItemType& anEntry) const;
 };
 
 #endif /* ArrayBag_hpp */
